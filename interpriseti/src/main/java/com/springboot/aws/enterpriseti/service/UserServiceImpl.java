@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Usuario> getListCursorUsers(String alias) {
-		return getListCursorUsers(alias);
+		return userDaoImpl.getListCursorUsers(alias);
 	}
 
 }
