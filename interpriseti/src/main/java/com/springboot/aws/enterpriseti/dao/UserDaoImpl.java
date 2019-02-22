@@ -72,10 +72,10 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<Usuario> getListCursorUsers(String alias) {
 		StoredProcedureQuery query = entityManager.createStoredProcedureQuery("NP_MANAGEMENT_USER_PKG.SP_GET_LIST_USERS",Usuario.class);
-		query.registerStoredProcedureParameter("AC_USERS",void.class,ParameterMode.REF_CURSOR);
-		query.registerStoredProcedureParameter("username",String.class,ParameterMode.IN);
-		query.registerStoredProcedureParameter("AV_MESSAGE",String.class,ParameterMode.OUT);
-		query.setParameter("username", alias);
+		query.registerStoredProcedureParameter(1,void.class,ParameterMode.REF_CURSOR);
+		query.registerStoredProcedureParameter(2,String.class,ParameterMode.IN);
+		query.registerStoredProcedureParameter(3,String.class,ParameterMode.OUT);
+		query.setParameter(2, alias);
 		query.execute();
 		List<Usuario> listUsers = (List<Usuario>) query.getResultList();		
 		return listUsers;
